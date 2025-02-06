@@ -4,21 +4,23 @@ extends templates/main
 block title
     title= movie.title
     script. 
-            const movieId = !{movieId};
+        const movieId = !{movieId};
 block content 
     - const id = movie.id
     main.main 
         a(href="/").home-page
             h2 Back to the home page
-        h1.movie-title= movie.title 
+        .title-div
+            h1.movie-title= movie.title 
         img.movie-img(src=movie.image.url, alt="" style="width: 25rem;")
+
         .movie-desc!= movie.intro
         .book-btns 
             button.change-city Välj stad
             button.view-tickets Visa biljetter 
         form.review-box
             h3.review-title Skapa recension
-            input(type="text", placeholder="Skriv en recension...").review-input
+            input(type="text" placeholder="Skriv en recension...").review-input
             label(for="rating").rating-label Betyg 
             select.rating-input(name="rating") 
                 option(value="0").select-option 0
@@ -27,7 +29,7 @@ block content
                 option(value="3").select-option 3
                 option(value="4").select-option 4
                 option(value="5").select-option 5
-            input(type="text", placeholder="Namn...").name-input
+            input(type="text" placeholder="Namn...").name-input
             button(type="submit").review-btn Skicka
             p.error-message Alla fält måste vara ifyllda
         section.screeningsID-container 

@@ -7,7 +7,6 @@ export async function getMovieRating(cmsAdapterRating, movieId) {
       const ratings = reviews.map((review) => review.attributes.rating);
       const totalRating = ratings.reduce((sum, rating) => sum + rating, 0);
       const averageRating = totalRating / ratings.length;
-      console.log(averageRating);
       return averageRating;
     } else {
       const imdbRating = await cmsAdapterRating.getImdbRating(movie.imdbId);

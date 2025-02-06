@@ -5,7 +5,7 @@ const apiBase = 'https://plankton-app-xhkom.ondigitalocean.app/api';
 
 const md = new MarkdownIt();
 
-function easyObject(api) {
+export function easyObject(api) {
   return {
     id: api.id,
     ...api.attributes,
@@ -85,21 +85,4 @@ export async function loadReview(id, pageSize, page) {
   }
 
   return dataReview;
-}
-
-export async function getImdbRating(imdbId) {
-  const apiKey = 'b9b5e708'; //Min api key
-  const apiUrl = `https://www.omdbapi.com/?i=${imdbId}&plot=full&apikey=${apiKey}`;
-
-  try {
-    const res = await fetch(apiUrl);
-    if (!res.ok) {
-      throw new Error('Kunde inte hämta IMDB-betyg');
-    }
-    const data = await res.json();
-    return parseFloat(data.imdbRating) || 0;
-  } catch (error) {
-    console.error('Kunde inte hämta IMDB-betyg för filmen', error);
-    return 0;
-  }
 }

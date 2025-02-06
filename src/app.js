@@ -4,6 +4,7 @@ import { loadScreenings } from './screeningsFrontpage.js';
 import { top5Movies } from './top5Movies.js';
 import cmsScreening from './movies.js';
 import { getMovieRating } from './rating.js';
+import cmsAdapterRating from './cmsAdapterRating.js';
 import cmsAdapter from './cmsAdapterTop5Movies.js';
 import { getReviews } from '../static/loadReviews.js';
 import cmsReviews from '../static/cmsReviews.js';
@@ -46,8 +47,7 @@ export default function initialize(api) {
       res.render('movie', {
         data: createData(),
         movie: movie,
-        movieId: id
-
+        movieId: id,
       });
     } catch (err) {
       console.error(err.message);
@@ -64,18 +64,17 @@ export default function initialize(api) {
       const dataReview = await getReviews(cmsReviews, id, page, pageSize);
 
       if (!dataReview) {
-        return res.status(404).json({ error: "Recensioner hittades inte" });
+        return res.status(404).json({ error: 'Recensioner hittades inte' });
       }
 
       res.json({
-        reviews: dataReview.reviews.map(review => ({
+        reviews: dataReview.reviews.map((review) => ({
           author: review.author,
           rating: review.rating,
           comment: review.comment,
         })),
-        pagination: dataReview.pagination
+        pagination: dataReview.pagination,
       });
-
     } catch (err) {
       console.error(err.message);
       res.status(404);
@@ -102,13 +101,19 @@ export default function initialize(api) {
 
   app.get('/api/screenings/:id', async (req, res) => {
     try {
+      const movieID = req.params.id;
       const screenings = await cmsScreening.loadScreeningsID(req, res);
-
+      const rating = await getMovieRating(cmsAdapterRating, movieID);
+      console.log(rating);
+      
       if (!screenings) {
         throw new Error('Array does not contain any screenings.');
       }
 
-      res.json(screenings);
+      res.json({
+        data: screenings,
+        rating: rating,
+      });
     } catch (e) {
       console.error(`Problems with fetching the screenings, ${e}`);
       res.status(500).json({ message: 'Could not fetch any screenings' });
