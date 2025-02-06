@@ -8,4 +8,4 @@ const myAPI = {
 
 const app = initialize(myAPI);
 
-app.listen(5080);
+app.listen(process.env.PORT || 5080);
