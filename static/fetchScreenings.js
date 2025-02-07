@@ -2,7 +2,7 @@
   const screeningsIDList = document.querySelector('.screeningsID-list');
   const parts = window.location.pathname.split('/');
   const movieId = parts.length > 2 ? parts[2] : null;
-  const API_URL = `/api/screenings/${movieId}`;
+  const API_URL = `/api/screenings/${movieId}`
 
   if (!screeningsIDList) {
     return;

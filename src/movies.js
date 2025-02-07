@@ -59,7 +59,8 @@ const cmsScreening = {
           id: screening.id,
           start_time: screening.attributes.start_time,
           room: screening.attributes.room,
-        }));
+        }))
+        .sort((a, b) => new Date(a.start_time) - new Date(b.start_time));
 
       return screeningsArray;
 
