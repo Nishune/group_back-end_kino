@@ -10,7 +10,7 @@ const cmsAdapterRating = {
   },
 
   loadReviews: async (movieId) => {
-    const res = await fetch(`${apiBase}/reviews?filters[movie]=${movieId}`);
+    const res = await fetch(`${apiBase}/reviews?filters[verified]=true&filters[movie]=${movieId}`);
     const payload = await res.json();
     return payload.data;
   },
