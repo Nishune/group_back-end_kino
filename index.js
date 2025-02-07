@@ -5,9 +5,9 @@ import { getReviews } from './static/loadReviews.js';
 const myAPI = {
   loadMovie,
   loadMovies,
-  getReviews
+  getReviews,
 };
 
 const app = initialize(myAPI);
 
-app.listen(5080);
+app.listen(process.env.PORT || 5080);
