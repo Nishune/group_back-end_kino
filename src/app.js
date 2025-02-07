@@ -6,7 +6,6 @@ import cmsScreening from './movies.js';
 import { getMovieRating } from './rating.js';
 import cmsAdapterRating from './cmsAdapterRating.js';
 import cmsAdapter from './cmsAdapterTop5Movies.js';
-import { getReviews } from '../static/loadReviews.js';
 import cmsReviews from '../static/cmsReviews.js';
 
 export default function initialize(api) {
@@ -61,10 +60,10 @@ export default function initialize(api) {
     const pageSize = 5;
 
     try {
-      const dataReview = await getReviews(cmsReviews, id, page, pageSize);
+      const dataReview = await api.getReviews(cmsReviews, id, page, pageSize);
 
-      if (!dataReview) {
-        return res.status(404).json({ error: 'Recensioner hittades inte' });
+      if (!dataReview || dataReview.reviews.length == 0) {
+        return res.status(500).json({ error: 'Recensioner hittades inte' });
       }
 
       res.json({
@@ -105,7 +104,7 @@ export default function initialize(api) {
       const screenings = await cmsScreening.loadScreeningsID(req, res);
       const rating = await getMovieRating(cmsAdapterRating, movieID);
       console.log(rating);
-      
+
       if (!screenings) {
         throw new Error('Array does not contain any screenings.');
       }
