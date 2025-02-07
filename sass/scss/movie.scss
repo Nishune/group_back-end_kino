@@ -11,14 +11,15 @@
   .home-page {
     color: inherit;
   }
-  .title-div {
 
-  .movie-title {
+  .title-div {
     grid-row: 2;
     margin-bottom: 2em;
+
     .movie-title {
       font-size: 2.5em;
     }
+    
     .rating-title {
       font-weight: 700;
       margin: 0;
@@ -222,6 +223,4 @@
         background-color: $text-color-secondary;
       }
     }
-  }
-
 }

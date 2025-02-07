@@ -904,15 +904,16 @@ main .info .open-div :hover {
   list-style: none;
   margin-left: -2.5rem;
 }
-.main .review-article {
+
+.review-article {
   grid-column: 4;
   grid-row: 4;
 }
-.main .review-article .review-header {
+.review-article .review-header {
   font-size: 2rem;
   padding-left: 1rem;
 }
-.main .review-article .review-div {
+.review-article .review-div {
   height: 280px;
   overflow: scroll;
   overflow-x: hidden;
@@ -921,15 +922,15 @@ main .info .open-div :hover {
   border: solid #f6f6f6;
   border-radius: 1rem;
 }
-.main .review-article .review-div .review-ul {
+.review-article .review-div .review-ul {
   list-style-type: none;
   padding-left: 0.5rem;
 }
-.main .review-article .review-div .review-ul .review-li {
+.review-article .review-div .review-ul .review-li {
   font-size: 1.25rem;
   border-bottom: solid #f6f6f6;
 }
-.main .review-article .review-prev {
+.review-article .review-prev {
   background-color: #fc263a;
   border: none;
   border-radius: 30px;
@@ -940,10 +941,10 @@ main .info .open-div :hover {
   padding-right: 3em;
   margin-left: 1rem;
 }
-.main .review-article .review-prev:disabled {
+.review-article .review-prev:disabled {
   background-color: #a8a8a8;
 }
-.main .review-article .review-next {
+.review-article .review-next {
   background-color: #fc263a;
   border: none;
   border-radius: 30px;
@@ -954,7 +955,7 @@ main .info .open-div :hover {
   padding-right: 3em;
   margin-left: 1rem;
 }
-.main .review-article .review-next:disabled {
+.review-article .review-next:disabled {
   background-color: #a8a8a8;
 }
 
@@ -968,6 +969,22 @@ main .info .open-div :hover {
 }
 .error-div .back-to-home {
   color: inherit;
+}
+
+.screenings-container {
+  background-color: #1a1a1a;
+  color: #f6f6f6;
+  margin: 3rem 1rem;
+  padding-left: 1rem;
+}
+
+.screenings-list {
+  padding: 0;
+  list-style: none;
+}
+
+.screenings-list li {
+  padding: 0.5rem;
 }
 
 * {

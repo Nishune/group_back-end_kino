@@ -1,0 +1,17 @@
+@use './lib.scss' as *;
+
+.screenings-container {
+  background-color: $background-color;
+  color: $text-color-main;
+  margin: 3rem 1rem;
+  padding-left: 1rem;
+}
+
+.screenings-list {
+  padding: 0;
+  list-style: none;
+}
+
+.screenings-list li {
+  padding: 0.5rem;
+}
